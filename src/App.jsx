@@ -1,30 +1,37 @@
-import { useState } from "react"
+import { createContext, useContext, useState } from "react"
+
+const AppContext = createContext();
 
 export default function App(){
            const [count, setCount] = useState(0);
-    return <>
+
+    return <AppContext.Provider value={{count}}>
+
              <h1>React Context Concept</h1> <br />
              <Header count = {count} />
               <div style={{marginTop:6, textAlign:'center'}}>
                 <button onClick={() => {setCount(count + 1)}} >+</button>
               </div>
-           </>
+
+           </AppContext.Provider>
 }
 
 
-function Header({count}){
+function Header(){
     return <div style={{background:'#666', padding:21}}>
-              context... <Title count = {count} />
+              context... <Title />
            </div>
 }
 
-function Title({count}){
+function Title(){
     return <>
-             <Badge count = {count} />
+             <Badge />
            </>
 }
 
-function Badge({count}){
+function Badge(){
+  
+           const {count} = useContext(AppContext);
 
     return <span style={{background:'red', padding:3}}>
             {count}
