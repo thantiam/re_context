@@ -1,19 +1,19 @@
-import { createContext, useContext, useState } from "react"
+import { useContext } from "react"
+import { AppContext } from "./AppProvider"
 
-const AppContext = createContext();
+
 
 export default function App(){
-           const [count, setCount] = useState(0);
-
-    return <AppContext.Provider value={{count}}>
+          const {count, setCount} = useContext(AppContext);
+    return <>
 
              <h1>React Context Concept</h1> <br />
-             <Header count = {count} />
+             <Header />
               <div style={{marginTop:6, textAlign:'center'}}>
                 <button onClick={() => {setCount(count + 1)}} >+</button>
               </div>
 
-           </AppContext.Provider>
+           </>
 }
 
 
@@ -30,7 +30,7 @@ function Title(){
 }
 
 function Badge(){
-  
+
            const {count} = useContext(AppContext);
 
     return <span style={{background:'red', padding:3}}>
