@@ -1,10 +1,8 @@
-import { useContext } from "react"
-import { AppContext } from "./AppProvider"
-
+import { useApp } from "./AppProvider";
 
 
 export default function App(){
-          const {count, setCount} = useContext(AppContext);
+          const {count, setCount} = useApp();
     return <>
 
              <h1>React Context Concept</h1> <br />
@@ -31,7 +29,7 @@ function Title(){
 
 function Badge(){
 
-           const {count} = useContext(AppContext);
+           const {count} = useApp();
 
     return <span style={{background:'red', padding:3}}>
             {count}

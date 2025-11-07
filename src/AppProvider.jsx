@@ -1,7 +1,7 @@
-import { createContext, useState } from "react"
+import { createContext, useContext, useState } from "react"
 
 
-export const AppContext = createContext(); 
+const AppContext = createContext(); 
 
 
 export default function AppProvider({children}){
@@ -11,4 +11,8 @@ export default function AppProvider({children}){
      return <AppContext.Provider value={{ count, setCount }}>
                 {children}
             </AppContext.Provider>
+}
+
+export function useApp(){
+     return useContext(AppContext);
 }
